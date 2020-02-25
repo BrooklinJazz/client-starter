@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { createPost } from "./redux/posts";
+import { useDispatch, connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-function App() {
+function App({createPost}: any) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      onClick={() => {
+        console.log("FIRING");
+        createPost({});
+      }}
+      className="App"
+    >
+      Chess App
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch: any) =>
+  bindActionCreators(
+    {
+      createPost
+    },
+    dispatch
+  );
+
+export default connect(undefined, mapDispatchToProps)(App);
