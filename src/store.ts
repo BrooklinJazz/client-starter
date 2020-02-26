@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import {posts} from './redux/posts'
+import {example} from './redux/example'
 
 const store = configureStore({
     reducer: {
-        posts
+        example
     }
 })
+
+export type AppDispatch = typeof store.dispatch
+export type AppState = ReturnType<typeof store.getState>
 
 export default store

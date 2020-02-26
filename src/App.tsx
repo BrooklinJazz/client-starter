@@ -1,24 +1,38 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { createPost } from "./redux/posts";
-import { useDispatch, connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { exampleAction } from "./redux/example";
+import { connect } from "react-redux";
+import { selectExample } from "./redux/selectors";
+import { AppState } from "./store";
 
-function App({createPost}: any) {
+function App({exampleAction, example}: IProps) {
   return (
     <div
       onClick={() => {
-        createPost({});
+        exampleAction({});
       }}
       className="App"
     >
-      Chess App
+      {example}
     </div>
   );
 }
-const mapDispatchToProps = {
-  createPost
+
+interface IProps extends IDispatch, IState {}
+
+interface IDispatch {
+  exampleAction: typeof exampleAction
 }
 
-export default connect(undefined, mapDispatchToProps)(App);
+interface IState {
+  example: ReturnType<typeof selectExample>
+}
+
+const mapDispatchToProps: IDispatch = {
+  exampleAction
+}
+
+const mapStateToProps = (state: AppState) => ({
+  example: selectExample(state)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
