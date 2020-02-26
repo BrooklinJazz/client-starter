@@ -18,13 +18,8 @@ function App({createPost}: any) {
     </div>
   );
 }
-
-const mapDispatchToProps = (dispatch: any) =>
-  bindActionCreators(
-    {
-      createPost
-    },
-    dispatch
-  );
+const mapDispatchToProps = {
+  createPost
+}
 
 export default connect(undefined, mapDispatchToProps)(App);
