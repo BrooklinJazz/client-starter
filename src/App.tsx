@@ -3,17 +3,26 @@ import { exampleAction } from "./redux/example";
 import { connect } from "react-redux";
 import { selectExample } from "./redux/selectors";
 import { AppState } from "./store";
+import styled from "styled-components";
+
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 function App({exampleAction, example}: IProps) {
   return (
-    <div
+    <Container
       onClick={() => {
         exampleAction({});
       }}
       className="App"
     >
       {example}
-    </div>
+    </Container>
   );
 }
 
