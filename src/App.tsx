@@ -9,7 +9,6 @@ function App({createPost}: any) {
   return (
     <div
       onClick={() => {
-        console.log("FIRING");
         createPost({});
       }}
       className="App"
