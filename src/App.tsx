@@ -13,7 +13,7 @@ const Container = styled.div`
   align-items: center;
 `
 
-function App({exampleAction, example}: IProps) {
+const App = ({exampleAction, example}: IProps) => {
   return (
     <Container
       onClick={() => {
